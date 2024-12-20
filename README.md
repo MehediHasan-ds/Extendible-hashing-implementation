@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-1. [Project Report](#project-report)
+1. [Report](#project-report)
 2. [Installation and Setup](#installation-and-setup)
 3. [File Structure](#file-structure)
 4. [How to Run](#how-to-run)
  
 ---
 
-## Project Report
+## Report
 
 ### 1. Complex Use Case Scenario
 
