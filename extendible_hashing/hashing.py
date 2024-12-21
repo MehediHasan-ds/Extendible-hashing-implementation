@@ -88,18 +88,58 @@ class ExtendibleHashingOptimized:
         load_factor = total_records / total_buckets
         return load_factor
         
-    def search(self, product_id):
-        """Search for a record by ProductID."""
+
+    def search_and_modify(self, product_id):
+        """Search for a record by ProductID and allow Update/Delete operations."""
         hash_value = self.hash_key(product_id)
         index = self.get_index(hash_value)
-        
         bucket = self.directory[index]
         
         for record in bucket.records:
             if record["ProductID"] == product_id:
-                print(f"product id: {product_id} found at bucket:{index}")
-                return record
-        return None
+                print(f"Product found: {record}")
+                while True:
+                    print("\nOptions:")
+                    print("1. Update Product")
+                    print("2. Delete Product")
+                    print("3. Exit Menu")
+                    choice = input("Enter your choice (1/2/3): ")
+                    
+                    if choice == "1":
+                        self.update_record(record)
+                        return
+                    elif choice == "2":
+                        self.delete_record(bucket, record)
+                        return
+                    elif choice == "3":
+                        print("Exiting menu.")
+                        return
+                    else:
+                        print("Invalid choice. Please try again.")
+        print("Product not found.")
+
+    def update_record(self, record):
+        """Update the details of a record."""
+        print("Enter new details for the product (leave blank to keep existing value):")
+        new_name = input(f"Product Name [{record['ProductName']}]: ") or record["ProductName"]
+        new_category = input(f"Category [{record['Category']}]: ") or record["Category"]
+        new_quantity = input(f"Quantity [{record['Quantity']}]: ") or record["Quantity"]
+        
+        # Update the record
+        record["ProductName"] = new_name
+        record["Category"] = new_category
+        try:
+            record["Quantity"] = int(new_quantity)
+        except ValueError:
+            print("Invalid quantity. Keeping existing value.")
+        
+        print(f"Product updated successfully: {record}")
+
+    def delete_record(self, bucket, record):
+        """Delete a record from the bucket."""
+        bucket.records.remove(record)
+        print(f"Product with ProductID {record['ProductID']} deleted successfully.")
+
 
     def display(self):
         """Display the directory and buckets."""
