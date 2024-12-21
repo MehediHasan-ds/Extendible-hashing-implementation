@@ -1,5 +1,31 @@
 # Extendible Hashing Optimized
 
+---
+
+## Features
+- Implementation of **extendible hashing** with dynamic bucket allocation.
+- Supports **CRUD operations** for managing records efficiently.
+- Provides user-friendly interaction to update and delete records.
+- Demonstrates practical use cases for **hash tables** in data management.
+
+---
+
+## Keywords
+
+- **Extendible hashing implementation**
+- **Dynamic hashing algorithm**
+- **Hash table with CRUD operations**
+- **Extendible Hashing with OOP implementation**
+- **Dynamic Hashing with OOP implementation**
+- **Data structures and hashing**
+- **Bucket splitting in hashing**
+- **Hash table CRUD functionality**
+- **Extendible hash table Python**
+- **Efficient data storage with hashing**
+
+---
+
+
 ## Table of Contents
 
 1. [Report](#project-report)
