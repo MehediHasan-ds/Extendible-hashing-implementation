@@ -24,6 +24,8 @@ A traditional hash table approach fails in this scenario due to fixed-size bucke
 #### Functional Requirements:
 - **Insertion:** Efficiently add new product records.
 - **Search:** Quickly retrieve product details using the ProductID.
+- **Update:** Modify existing product records.
+- **Delete:** Remove product records from the system.
 - **Load Factor Management:** Maintain a balanced load factor to optimize memory usage.
 - **Scalability:** Dynamically adjust to accommodate growing data.
 
@@ -35,6 +37,8 @@ A traditional hash table approach fails in this scenario due to fixed-size bucke
 #### Constraints:
 - Fixed bucket capacity.
 - Limited initial memory allocation to simulate a real-world constraint.
+
+---
 
 ### 3. Plan to Solve the Use Case Scenario
 
@@ -194,17 +198,25 @@ Computes the load factor, which is the ratio of total records to the total numbe
 
 ---
 
-### 8. `search(self, product_id)`
-Searches for a record based on its `ProductID`.
+### 8. `search_and_modify(self, product_id)`
+Searches for a product by `ProductID` and provides options to **Update** or **Delete** the product. This makes search operations interactive and intuitive.
 
 #### Steps:
 1. Calculates the hash value and identifies the corresponding bucket.
 2. Scans the bucket for a matching `ProductID`.
-3. Returns the record if found; otherwise, returns `None`.
+3. Prints the record if found; and then shows the menu options for update and delete. helper methods: `update_record(record)` and `delete_record(bucket, record)` do the rest of the work. the user has exiting option from the menu.
+
+### 9. `update_record(self, record)`
+ Updates the details of an existing product. Allows users to modify specific fields while retaining existing values if no new input is provided.
+
+### 10. `delete_record(self, bucket, record)`
+ Deletes a product record from its corresponding bucket. Ensures the record is correctly removed without affecting the rest of the data.
 
 ---
 
-### 9. `display(self)`
+---
+
+### 11. `display(self)`
 Prints the current structure of the hash table, including:
 - **Global Depth**
 - Each bucket’s **Local Depth** and stored records.
@@ -253,7 +265,7 @@ ExtendibleHashingProject/
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/username/repository-name.git
+   git clone https://github.com/MehediHasan-ds/Extendible-hashing-implementation.git
    cd repository-name
    ```
 
